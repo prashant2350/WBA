@@ -471,3 +471,85 @@ body {
   color: #ef4444; border: none; border-radius: 50%; width: 40px; height: 40px;
   font-size: 1.5rem; cursor: pointer; z-index: 10000; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+/* =========================================
+   9. Mobile Responsiveness (Smartphones & Tablets)
+========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Reduce empty white space on the edges of the screen */
+  .app-container { 
+    padding: 1rem; 
+  }
+
+  /* 2. Shrink the massive header and its text */
+  .app-header { 
+    margin: -1rem -1rem 2rem -1rem; 
+    padding: 2.5rem 1.5rem;
+    border-radius: 0 0 20px 20px;
+  }
+  .app-header h1 { 
+    font-size: 2rem; /* Shrunk from 3.2rem */
+    line-height: 1.2;
+  }
+  .app-header p { 
+    font-size: 0.95rem; 
+  }
+
+  /* 3. Adjust headings across the site */
+  .services-container h2, 
+  .form-container h2 {
+    font-size: 1.8rem;
+  }
+
+  /* 4. Fix the Form and Contact Block spacing */
+  .contact-section {
+    flex-direction: column; /* Forces them to stack vertically */
+  }
+  .form-container { 
+    padding: 1.5rem; /* Less padding so inputs fit the screen */
+  }
+  .direct-contact { 
+    padding: 2rem 1.5rem; 
+    border-left: none; /* Remove the vertical line... */
+    border-top: 1px solid #e2e8f0; /* ...and add a horizontal line instead */
+  }
+
+  /* 5. Shrink the floating menu so it doesn't block reading */
+  .top-contact-bar {
+    top: 10px;
+    right: 10px;
+    padding: 8px;
+    gap: 8px;
+  }
+  .top-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem; /* Smaller text */
+  }
+
+  /* 6. Make the Footer fit perfectly */
+  .app-footer {
+    padding: 2rem 1.5rem 1rem 1.5rem;
+  }
+  .footer-content {
+    flex-direction: column; /* Stack address and map */
+    text-align: center; /* Center everything */
+    gap: 1.5rem;
+  }
+  .footer-map {
+    max-width: 100%; /* Allow map to fill the phone screen */
+    width: 100%;
+  }
+
+  /* 7. Fix popup modals overflowing off the screen */
+  .modal-content {
+    padding: 10px;
+    margin: 10px;
+  }
+  .modal-close-btn {
+    top: 5px;
+    right: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}
