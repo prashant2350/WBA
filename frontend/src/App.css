@@ -1,555 +1,354 @@
 /* =========================================
-   1. Reset & Base Typography (With Scroll Fix)
+   1. Global Styles & Variables
 ========================================= */
-* { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
+:root {
+  --primary-color: #1a237e;    /* Deep Premium Blue */
+  --secondary-color: #0d47a1;  /* Classic Royal Blue */
+  --accent-color: #2e7d32;     /* Trustworthy Green */
+  --text-dark: #1e293b;        /* Charcoal for high readability */
+  --text-light: #64748b;       /* Muted gray for subtitles */
+  --bg-light: #f8fafc;         /* Clean, soft background */
+  --card-bg: #ffffff;          /* Pure white for cards */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html, body { 
-  overflow-x: hidden; /* Fixes the 100vw horizontal scroll bug */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-body { 
-  font-family: 'Poppins', sans-serif; 
-  background-color: #f8fafc; 
-  color: #1e293b; 
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
-.app-container { 
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 2rem; 
-}
-
 /* =========================================
-   2. Keyframe Animations
+   2. Layout Container
 ========================================= */
-@keyframes fadeInSlideUp { 
-  from { opacity: 0; transform: translateY(30px); } 
-  to { opacity: 1; transform: translateY(0); } 
-}
-
-@keyframes pulseGlow { 
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); transform: scale(1); } 
-  50% { box-shadow: 0 0 15px 10px rgba(37, 211, 102, 0); transform: scale(1.02); } 
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); } 
-}
-
-/* =========================================
-   3. Premium Header (Gradient & Shadow)
-========================================= */
-.app-header { 
-  text-align: center; 
-  margin: -2rem -2rem 4rem -2rem; 
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); 
-  color: white;
-  border-radius: 0 0 30px 30px;
-  animation: fadeInSlideUp 0.8s ease-out; 
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
-}
-
-.app-header h1 { 
-  color: #ffffff; 
-  font-size: 3.2rem; 
-  margin-bottom: 0.5rem; 
-  font-weight: 800; 
-  letter-spacing: 1px; 
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.app-header p { 
-  color: #cbd5e1; 
-  font-size: 1.2rem; 
-  font-weight: 400; 
-  letter-spacing: 1px; 
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  /* FIXED: Added padding-top to prevent ANY overlap with the floating bar on desktop */
+  padding-top: 6rem; 
+  position: relative;
 }
 
 /* =========================================
-   4. Services Grid & Modern Cards
-========================================= */
-.services-container { 
-  margin-bottom: 5rem; 
-  animation: fadeInSlideUp 0.8s ease-out 0.2s both; 
-}
-
-.services-container h2 { 
-  text-align: center; 
-  color: #1a237e; 
-  margin-bottom: 2.5rem; 
-  font-size: 2.2rem;
-  font-weight: 800;
-}
-
-.services-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: 2rem; 
-}
-
-.service-card { 
-  background: white; 
-  padding: 2.5rem; 
-  border-radius: 16px; 
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); 
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-  border-top: 5px solid transparent; 
-  cursor: pointer;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.service-card:hover { 
-  transform: translateY(-12px); 
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
-  border-top: 5px solid #3b82f6; 
-}
-
-.service-card h3 { 
-  color: #1a237e; 
-  margin-bottom: 1rem; 
-  font-size: 1.3rem; 
-  font-weight: 600;
-}
-
-.service-card p { 
-  color: #64748b; 
-  font-size: 0.95rem; 
-  line-height: 1.6; 
-  margin-bottom: 1.5rem; 
-  flex-grow: 1; 
-}
-
-.fee-display { 
-  display: inline-block; 
-  background: #e0e7ff; 
-  color: #1e40af; 
-  padding: 0.5rem 1rem; 
-  border-radius: 20px; 
-  font-weight: 600; 
-  font-size: 0.9rem; 
-  align-self: flex-start;
-}
-
-/* =========================================
-   5. Contact Form Area (Modals & Page)
-========================================= */
-.contact-section { 
-  background: white; 
-  border-radius: 16px; 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-  display: flex; 
-  flex-wrap: wrap; 
-  overflow: hidden; 
-  animation: fadeInSlideUp 0.8s ease-out 0.4s both; 
-}
-
-.form-container { 
-  flex: 1.5; 
-  min-width: 300px; 
-  padding: 3rem; 
-}
-
-.form-container h2 { 
-  color: #1a237e; 
-  margin-bottom: 2rem; 
-  font-size: 2rem; 
-  font-weight: 600;
-}
-
-.form-container input, 
-.form-container textarea, 
-.form-container select { 
-  width: 100%; 
-  padding: 1rem; 
-  margin-bottom: 1.2rem; 
-  border: 2px solid #e2e8f0; 
-  border-radius: 8px; 
-  font-family: inherit; 
-  font-size: 1rem; 
-  transition: border-color 0.3s, box-shadow 0.3s; 
-  background-color: #f8fafc;
-  color: #1e293b;
-}
-
-.form-container input:focus, 
-.form-container textarea:focus, 
-.form-container select:focus { 
-  outline: none; 
-  border-color: #3b82f6; 
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); 
-}
-
-.form-container textarea { 
-  resize: vertical; 
-  min-height: 120px; 
-}
-
-.submit-btn { 
-  width: 100%; 
-  padding: 1.2rem; 
-  background: #1e1b4b; 
-  color: white; 
-  border: none; 
-  border-radius: 8px; 
-  font-size: 1.1rem; 
-  font-weight: 600; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-}
-
-.submit-btn:hover { 
-  background: #312e81; 
-  transform: translateY(-2px); 
-  box-shadow: 0 5px 15px rgba(49, 46, 129, 0.3); 
-}
-
-/* =========================================
-   6. Direct WhatsApp Block (Bottom)
-========================================= */
-.direct-contact { 
-  flex: 1; 
-  min-width: 300px; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  text-align: center; 
-  background: #f8fafc; 
-  padding: 3rem; 
-  border-left: 1px solid #e2e8f0; 
-}
-
-.direct-contact h3 { 
-  color: #0f172a; 
-  margin-bottom: 1rem; 
-  font-size: 1.5rem; 
-  font-weight: 600;
-}
-
-.direct-contact p { 
-  color: #64748b; 
-  margin-bottom: 2rem; 
-  line-height: 1.6; 
-  font-size: 1.1rem; 
-}
-
-.whatsapp-btn { 
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center; 
-  padding: 1.2rem 2rem; 
-  background: #25D366; 
-  color: white; 
-  text-decoration: none; 
-  border-radius: 30px; 
-  font-weight: 600; 
-  font-size: 1.1rem; 
-  animation: pulseGlow 2s infinite; 
-  transition: transform 0.3s; 
-}
-
-.whatsapp-btn:hover { 
-  animation: none; 
-  transform: scale(1.05); 
-  background: #20ba56; 
-}
-
-/* =========================================
-   7. Top-Right Floating Bar (Glassmorphism)
+   3. Floating Top-Right Contact Bar (Desktop)
 ========================================= */
 .top-contact-bar {
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: 40px;
   display: flex;
-  flex-direction: column; 
-  gap: 12px; 
+  flex-direction: row;
+  gap: 12px;
   z-index: 1000;
-  transition: all 0.4s ease-out;
-  
-  /* Frosted Glass Effect */
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); 
-  padding: 12px; 
-  border-radius: 25px; 
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 10px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: var(--transition-smooth);
+}
+
+.top-contact-bar.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
 }
 
 .top-contact-bar.visible {
   opacity: 1;
   transform: translateY(0);
-  visibility: visible;
-  pointer-events: auto; 
-}
-
-.top-contact-bar.hidden {
-  opacity: 0;
-  transform: translateY(-20px);
-  visibility: hidden;
-  pointer-events: none; 
 }
 
 .top-btn {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
   padding: 10px 18px;
   border-radius: 30px;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition-smooth);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-}
-
-.top-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 .whatsapp-btn-top {
-  background: #25D366;
+  background-color: #25d366;
+  color: white;
 }
 
 .whatsapp-btn-top:hover {
-  background: #20ba56;
+  background-color: #1cbd55;
+  transform: translateY(-2px);
 }
 
 .email-btn-top {
-  background: #EA4335;
+  background-color: #ea4335;
+  color: white;
 }
 
 .email-btn-top:hover {
-  background: #d33828;
+  background-color: #d33225;
+  transform: translateY(-2px);
 }
 
 .book-btn-top {
-  background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .book-btn-top:hover {
-  background: linear-gradient(45deg, #e07ceb 0%, #e3455a 100%);
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
 }
 
 /* =========================================
-   8. Premium Footer Section (Full-Width & Compact)
+   4. Premium Header
 ========================================= */
-.app-footer {
-  background: #0f172a;
-  color: #cbd5e1;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-top: 4rem;
-  margin-bottom: -2rem; /* Fixes the white space at the bottom */
-  padding: 2rem 5% 1rem 5%; 
-  border-radius: 30px 30px 0 0;
-  box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.1);
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem; 
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer-address {
-  flex: 1;
-  min-width: 300px;
-}
-
-.footer-address h3 {
-  color: #ffffff;
-  font-size: 1.5rem; 
-  margin-bottom: 0.8rem; 
-  font-weight: 700;
-}
-
-.footer-address p {
-  font-size: 0.95rem; 
-  line-height: 1.5; 
-  margin-bottom: 1rem;
-  color: #94a3b8;
-}
-
-.footer-address strong {
-  color: #ffffff;
-  font-size: 1.05rem;
-}
-
-.nav-btn {
-  display: inline-block;
-  background: #3b82f6;
+.app-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
   color: white;
-  padding: 10px 20px; 
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-}
-
-.nav-btn:hover {
-  background: #2563eb;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-}
-
-.footer-map {
-  flex: 1;
-  min-width: 300px;
-  max-width: 450px; 
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  border: 3px solid #1e293b;
-  display: flex;
-}
-
-.footer-map iframe {
-  height: 160px !important; 
-}
-
-.footer-bottom {
+  padding: 4rem 2rem;
+  border-radius: 24px;
   text-align: center;
-  margin-top: 1.5rem; 
-  padding-top: 1rem; 
-  border-top: 1px solid #1e293b;
-  font-size: 0.85rem;
-  color: #64748b;
+  margin-bottom: 3rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Modal classes to clean up App.js inline styles */
+.app-header h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #ffffff, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-header p {
+  font-size: 1.25rem;
+  color: #93c5fd;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* =========================================
+   5. General Component Layout Elements
+========================================= */
 .book-consultation-btn {
-  background: linear-gradient(45deg, #1e1b4b 0%, #312e81 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: white;
-  padding: 15px 40px;
-  font-size: 1.2rem;
   border: none;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(49, 46, 129, 0.3);
-  font-weight: bold;
-  display: inline-block;
-  transition: transform 0.2s;
+  box-shadow: 0 10px 20px rgba(26, 35, 126, 0.2);
+  transition: var(--transition-smooth);
 }
 
 .book-consultation-btn:hover {
   transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(26, 35, 126, 0.3);
 }
 
+/* Modal Popup Core Layout */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background-color: rgba(15, 23, 42, 0.8);
-  display: flex; justify-content: center; align-items: center;
-  z-index: 9999;
-  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 
 .modal-content {
-  position: relative; width: 100%; max-width: 900px; padding: 20px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .modal-close-btn {
-  position: absolute; top: 5px; right: 25px; background: white;
-  color: #ef4444; border: none; border-radius: 50%; width: 40px; height: 40px;
-  font-size: 1.5rem; cursor: pointer; z-index: 10000; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f1f5f9;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
 }
+
+.modal-close-btn:hover {
+  background: #e2e8f0;
+}
+
 /* =========================================
-   9. Mobile Responsiveness (Smartphones & Tablets)
+   6. Premium Footer
+========================================= */
+.app-footer {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 4rem 2rem 2rem 2rem;
+  margin-top: 5rem;
+  border-radius: 24px 24px 0 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-address {
+  flex: 1;
+}
+
+.footer-address h3 {
+  color: #38bdf8;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-address p {
+  color: #94a3b8;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.footer-map {
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.nav-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #38bdf8;
+  color: #0f172a;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: var(--transition-smooth);
+}
+
+.nav-btn:hover {
+  background-color: #0ea5e9;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #334155;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   7. Complete Mobile Responsiveness Rules
 ========================================= */
 @media (max-width: 768px) {
   
-  /* 1. Reduce empty white space on the edges of the screen */
   .app-container { 
     padding: 1rem; 
+    padding-top: 5.5rem; /* Reduces top gap layout safely for mobile */
   }
 
-  /* 2. Shrink the massive header and its text */
+  /* Compact Horizontal Layout for Top Buttons on Mobile Screen */
+  .top-contact-bar {
+    top: 12px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    width: max-content;
+    flex-direction: row;
+    padding: 6px 10px;
+    gap: 6px;
+    border-radius: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .top-btn {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  /* Safe Header Positioning on Mobile Layout */
   .app-header { 
     margin: -1rem -1rem 2rem -1rem; 
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 1.2rem 2rem 1.2rem;
     border-radius: 0 0 20px 20px;
   }
+  
   .app-header h1 { 
-    font-size: 2rem; /* Shrunk from 3.2rem */
+    font-size: 1.8rem;
     line-height: 1.2;
   }
+  
   .app-header p { 
-    font-size: 0.95rem; 
+    font-size: 0.9rem; 
   }
 
-  /* 3. Adjust headings across the site */
-  .services-container h2, 
-  .form-container h2 {
-    font-size: 1.8rem;
-  }
-
-  /* 4. Fix the Form and Contact Block spacing */
-  .contact-section {
-    flex-direction: column; /* Forces them to stack vertically */
-  }
-  .form-container { 
-    padding: 1.5rem; /* Less padding so inputs fit the screen */
-  }
-  .direct-contact { 
-    padding: 2rem 1.5rem; 
-    border-left: none; /* Remove the vertical line... */
-    border-top: 1px solid #e2e8f0; /* ...and add a horizontal line instead */
-  }
-
-  /* 5. Shrink the floating menu so it doesn't block reading */
-  .top-contact-bar {
-    top: 10px;
-    right: 10px;
-    padding: 8px;
-    gap: 8px;
-  }
-  .top-btn {
-    padding: 8px 12px;
-    font-size: 0.8rem; /* Smaller text */
-  }
-
-  /* 6. Make the Footer fit perfectly */
-  .app-footer {
-    padding: 2rem 1.5rem 1rem 1.5rem;
-  }
+  /* Footer Adjustment */
   .footer-content {
-    flex-direction: column; /* Stack address and map */
-    text-align: center; /* Center everything */
-    gap: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
   }
+  
   .footer-map {
-    max-width: 100%; /* Allow map to fill the phone screen */
-    width: 100%;
+    max-width: 100%;
   }
 
-  /* 7. Fix popup modals overflowing off the screen */
+  /* Form & Popups */
   .modal-content {
-    padding: 10px;
+    padding: 15px;
     margin: 10px;
   }
+  
   .modal-close-btn {
-    top: 5px;
-    right: 5px;
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
+    top: 8px;
+    right: 8px;
   }
 }
