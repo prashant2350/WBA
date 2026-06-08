@@ -17,7 +17,7 @@ const ConsultationForm = ({ initialService = '' }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/consultation', formData);
+      await axios.post('https://wise-backend-aboc.onrender.com/api/consultation', formData);
       alert('Consultation request saved successfully! Our team will contact you soon.');
       setFormData({ name: '', phone: '', serviceInterest: initialService, message: '' });
     } catch (error) {
