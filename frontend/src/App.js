@@ -21,7 +21,6 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll function for the new button
   const scrollToBooking = () => {
     const element = document.getElementById("home-booking-card");
     if (element) {
@@ -33,6 +32,10 @@ function App() {
   const whatsappMessage = encodeURIComponent("Hello Siddheshwar Upadhyay, I would like to request a consultation.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const emailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=solutionswba@gmail.com&su=Request for Business Consultation";
+  
+  // Direct links to search and display the firm on Google Maps
+  const mapUrl = "https://www.google.com/maps/search/WISE+Business+Advisors+LLP+Laxmi+Nagar+Delhi"; 
+  const embedMapUrl = "https://maps.google.com/maps?q=WISE%20Business%20Advisors%20LLP,%20Laxmi%20Nagar,%20Delhi&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
   return (
     <Router>
@@ -52,7 +55,6 @@ function App() {
         </div>
 
         <header className="app-header">
-          {/* Reverted to text-based header, styled by our premium CSS */}
           <h1>WISE BUSINESS ADVISORS LLP</h1>
           <p>Corporate | Legal | Taxation | Compliance | IPR | Financial Advisory</p>
         </header>
@@ -71,13 +73,7 @@ function App() {
                   </p>
                   <button 
                     onClick={() => setIsHomeModalOpen(true)}
-                    style={{
-                      background: 'linear-gradient(45deg, #f093fb 0%, #f5576c 100%)',
-                      color: 'white', padding: '15px 40px', fontSize: '1.2rem',
-                      border: 'none', borderRadius: '50px', cursor: 'pointer',
-                      boxShadow: '0 10px 20px rgba(245, 87, 108, 0.3)',
-                      fontWeight: 'bold', display: 'inline-block'
-                    }}
+                    className="book-consultation-btn"
                   >
                     Book Consultation Now
                   </button>
@@ -85,22 +81,9 @@ function App() {
 
                 {/* Homepage Popup Modal */}
                 {isHomeModalOpen && (
-                  <div style={{
-                    position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)', display: 'flex', 
-                    justifyContent: 'center', alignItems: 'center', zIndex: 9999
-                  }}>
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '900px', padding: '20px' }}>
-                      <button 
-                        onClick={() => setIsHomeModalOpen(false)}
-                        style={{
-                          position: 'absolute', top: '5px', right: '25px', background: 'white',
-                          color: 'red', border: 'none', borderRadius: '50%', width: '40px', height: '40px',
-                          fontSize: '1.5rem', cursor: 'pointer', zIndex: 10000, boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
-                        }}
-                      >
-                        ✖
-                      </button>
+                  <div className="modal-overlay">
+                    <div className="modal-content">
+                      <button onClick={() => setIsHomeModalOpen(false)} className="modal-close-btn">✖</button>
                       <ConsultationForm />
                     </div>
                   </div>
@@ -111,6 +94,43 @@ function App() {
             <Route path="/service/:id" element={<ServiceDetails />} />
           </Routes>
         </main>
+
+        {/* Premium Footer Section */}
+        <footer className="app-footer">
+          <div className="footer-content">
+            <div className="footer-address">
+              <h3>Visit Our Office</h3>
+              <p>
+                <strong>WISE BUSINESS ADVISORS LLP</strong><br/>
+                H. No. D-323/A, Pvt. Shop No. 206,<br/>
+                Second Floor, Gali No. 11,<br/>
+                Laxmi Nagar, East Delhi,<br/>
+                Delhi - 110092, India
+              </p>
+              <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="nav-btn">
+                📍 Get Directions
+              </a>
+            </div>
+            
+            <div className="footer-map">
+              {/* Google Maps HTML iframe Embed pointing to the official listing */}
+              <iframe 
+                title="Wise Business Advisors LLP Location"
+                src={embedMapUrl}
+                width="100%" 
+                height="250" 
+                style={{ border: 0, borderRadius: '12px' }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} WISE Business Advisors LLP. All Rights Reserved.</p>
+          </div>
+        </footer>
+
       </div>
     </Router>
   );

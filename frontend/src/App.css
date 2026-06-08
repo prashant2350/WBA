@@ -1,10 +1,14 @@
 /* =========================================
-   1. Reset & Base Typography
+   1. Reset & Base Typography (With Scroll Fix)
 ========================================= */
 * { 
   box-sizing: border-box; 
   margin: 0; 
   padding: 0; 
+}
+
+html, body { 
+  overflow-x: hidden; /* Fixes the 100vw horizontal scroll bug */
 }
 
 body { 
@@ -258,16 +262,13 @@ body {
 /* =========================================
    7. Top-Right Floating Bar (Glassmorphism)
 ========================================= */
-/* =========================================
-   7. Top-Right Floating Bar (Glassmorphism)
-========================================= */
 .top-contact-bar {
   position: fixed;
   top: 20px;
   right: 20px;
   display: flex;
-  flex-direction: column; /* Stacks the buttons vertically */
-  gap: 12px; /* Adds space between the top and bottom button */
+  flex-direction: column; 
+  gap: 12px; 
   z-index: 1000;
   transition: all 0.4s ease-out;
   
@@ -276,7 +277,7 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); 
   padding: 12px; 
-  border-radius: 25px; /* Adjusted to look better as a vertical container */
+  border-radius: 25px; 
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -305,6 +306,7 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
 }
 
@@ -328,7 +330,7 @@ body {
 .email-btn-top:hover {
   background: #d33828;
 }
-/* Styling for the new scroll-to-book button */
+
 .book-btn-top {
   background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
   border: none;
@@ -338,4 +340,134 @@ body {
 
 .book-btn-top:hover {
   background: linear-gradient(45deg, #e07ceb 0%, #e3455a 100%);
+}
+
+/* =========================================
+   8. Premium Footer Section (Full-Width & Compact)
+========================================= */
+.app-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 4rem;
+  margin-bottom: -2rem; /* Fixes the white space at the bottom */
+  padding: 2rem 5% 1rem 5%; 
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; 
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-address {
+  flex: 1;
+  min-width: 300px;
+}
+
+.footer-address h3 {
+  color: #ffffff;
+  font-size: 1.5rem; 
+  margin-bottom: 0.8rem; 
+  font-weight: 700;
+}
+
+.footer-address p {
+  font-size: 0.95rem; 
+  line-height: 1.5; 
+  margin-bottom: 1rem;
+  color: #94a3b8;
+}
+
+.footer-address strong {
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+.nav-btn {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 10px 20px; 
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.nav-btn:hover {
+  background: #2563eb;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+.footer-map {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px; 
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  border: 3px solid #1e293b;
+  display: flex;
+}
+
+.footer-map iframe {
+  height: 160px !important; 
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 1.5rem; 
+  padding-top: 1rem; 
+  border-top: 1px solid #1e293b;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Modal classes to clean up App.js inline styles */
+.book-consultation-btn {
+  background: linear-gradient(45deg, #1e1b4b 0%, #312e81 100%);
+  color: white;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(49, 46, 129, 0.3);
+  font-weight: bold;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.book-consultation-btn:hover {
+  transform: translateY(-3px);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(15, 23, 42, 0.8);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative; width: 100%; max-width: 900px; padding: 20px;
+}
+
+.modal-close-btn {
+  position: absolute; top: 5px; right: 25px; background: white;
+  color: #ef4444; border: none; border-radius: 50%; width: 40px; height: 40px;
+  font-size: 1.5rem; cursor: pointer; z-index: 10000; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
