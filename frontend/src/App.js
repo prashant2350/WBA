@@ -31,7 +31,8 @@ function App() {
   const whatsappNumber = "919555455600";
   const whatsappMessage = encodeURIComponent("Hello Siddheshwar Upadhyay, I would like to request a consultation.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-  const emailUrl = "mailto:solutionswba@gmail.com?subject=Consultation Request";
+  // Updated Email Link (Forces Gmail in browser)
+  const emailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=solutionswba@gmail.com&su=Request for Business Consultation";
 
   return (
     <Router>

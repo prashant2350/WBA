@@ -1,95 +1,326 @@
-/* --- Reset & Base Styles --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-  background-color: #f4f7f6; 
-  color: #333; 
+/* =========================================
+   1. Reset & Base Typography
+========================================= */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
 }
 
-/* --- Animations --- */
+body { 
+  font-family: 'Poppins', sans-serif; 
+  background-color: #f8fafc; 
+  color: #1e293b; 
+  line-height: 1.6;
+}
+
+.app-container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 2rem; 
+}
+
+/* =========================================
+   2. Keyframe Animations
+========================================= */
 @keyframes fadeInSlideUp { 
   from { opacity: 0; transform: translateY(30px); } 
   to { opacity: 1; transform: translateY(0); } 
 }
+
 @keyframes pulseGlow { 
   0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); transform: scale(1); } 
   50% { box-shadow: 0 0 15px 10px rgba(37, 211, 102, 0); transform: scale(1.02); } 
   100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); } 
 }
 
-/* --- Layout --- */
-.app-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-
-/* --- Header Section --- */
+/* =========================================
+   3. Premium Header (Gradient & Shadow)
+========================================= */
 .app-header { 
-  text-align: center; margin-bottom: 4rem; margin-top: 2rem;
+  text-align: center; 
+  margin: -2rem -2rem 4rem -2rem; 
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); 
+  color: white;
+  border-radius: 0 0 30px 30px;
   animation: fadeInSlideUp 0.8s ease-out; 
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
 }
-.app-header h1 { color: #1a237e; font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 800; letter-spacing: 1px; }
-.app-header p { color: #555; font-size: 1.1rem; font-weight: 500; letter-spacing: 0.5px; }
 
-/* --- Services Section --- */
+.app-header h1 { 
+  color: #ffffff; 
+  font-size: 3.2rem; 
+  margin-bottom: 0.5rem; 
+  font-weight: 800; 
+  letter-spacing: 1px; 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.app-header p { 
+  color: #cbd5e1; 
+  font-size: 1.2rem; 
+  font-weight: 400; 
+  letter-spacing: 1px; 
+}
+
+/* =========================================
+   4. Services Grid & Modern Cards
+========================================= */
 .services-container { 
   margin-bottom: 5rem; 
   animation: fadeInSlideUp 0.8s ease-out 0.2s both; 
 }
-.services-container h2 { text-align: center; color: #1a237e; margin-bottom: 2.5rem; font-size: 2.2rem; }
+
+.services-container h2 { 
+  text-align: center; 
+  color: #1a237e; 
+  margin-bottom: 2.5rem; 
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
 .services-grid { 
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 2rem; 
 }
+
 .service-card { 
-  background: white; padding: 2rem; border-radius: 12px; 
-  box-shadow: 0 4px 6px rgba(0,0,0,0.04); transition: all 0.3s ease; 
-  border-top: 5px solid #1a237e; cursor: default;
+  background: white; 
+  padding: 2.5rem; 
+  border-radius: 16px; 
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); 
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+  border-top: 5px solid transparent; 
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
 .service-card:hover { 
-  transform: translateY(-10px); 
-  box-shadow: 0 15px 25px rgba(26, 35, 126, 0.1); 
-  border-top-color: #d4af37;
+  transform: translateY(-12px); 
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
+  border-top: 5px solid #3b82f6; 
 }
-.service-card h3 { color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem; }
-.service-card p { color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+
+.service-card h3 { 
+  color: #1a237e; 
+  margin-bottom: 1rem; 
+  font-size: 1.3rem; 
+  font-weight: 600;
+}
+
+.service-card p { 
+  color: #64748b; 
+  font-size: 0.95rem; 
+  line-height: 1.6; 
+  margin-bottom: 1.5rem; 
+  flex-grow: 1; 
+}
+
 .fee-display { 
-  display: inline-block; background: #e8eaf6; color: #1a237e; 
-  padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; 
+  display: inline-block; 
+  background: #e0e7ff; 
+  color: #1e40af; 
+  padding: 0.5rem 1rem; 
+  border-radius: 20px; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  align-self: flex-start;
 }
 
-/* --- Form & Contact Section --- */
+/* =========================================
+   5. Contact Form Area (Modals & Page)
+========================================= */
 .contact-section { 
-  background: white; border-radius: 16px; 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; flex-wrap: wrap; 
-  overflow: hidden; animation: fadeInSlideUp 0.8s ease-out 0.4s both; 
+  background: white; 
+  border-radius: 16px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+  display: flex; 
+  flex-wrap: wrap; 
+  overflow: hidden; 
+  animation: fadeInSlideUp 0.8s ease-out 0.4s both; 
 }
-.form-container { flex: 1.5; min-width: 300px; padding: 3rem; }
-.form-container h2 { color: #1a237e; margin-bottom: 2rem; font-size: 2rem; }
-.form-container input, .form-container textarea { 
-  width: 100%; padding: 1rem; margin-bottom: 1.2rem; 
-  border: 2px solid #eee; border-radius: 8px; font-family: inherit; 
-  font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; 
-}
-.form-container input:focus, .form-container textarea:focus { 
-  outline: none; border-color: #1a237e; box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1); 
-}
-.form-container textarea { resize: vertical; min-height: 120px; }
-.submit-btn { 
-  width: 100%; padding: 1.2rem; background: #1a237e; color: white; 
-  border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; 
-  cursor: pointer; transition: all 0.3s ease; 
-}
-.submit-btn:hover { background: #0d145c; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3); }
 
-/* --- Direct WhatsApp Contact --- */
+.form-container { 
+  flex: 1.5; 
+  min-width: 300px; 
+  padding: 3rem; 
+}
+
+.form-container h2 { 
+  color: #1a237e; 
+  margin-bottom: 2rem; 
+  font-size: 2rem; 
+  font-weight: 600;
+}
+
+.form-container input, 
+.form-container textarea, 
+.form-container select { 
+  width: 100%; 
+  padding: 1rem; 
+  margin-bottom: 1.2rem; 
+  border: 2px solid #e2e8f0; 
+  border-radius: 8px; 
+  font-family: inherit; 
+  font-size: 1rem; 
+  transition: border-color 0.3s, box-shadow 0.3s; 
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.form-container input:focus, 
+.form-container textarea:focus, 
+.form-container select:focus { 
+  outline: none; 
+  border-color: #3b82f6; 
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); 
+}
+
+.form-container textarea { 
+  resize: vertical; 
+  min-height: 120px; 
+}
+
+.submit-btn { 
+  width: 100%; 
+  padding: 1.2rem; 
+  background: #1e1b4b; 
+  color: white; 
+  border: none; 
+  border-radius: 8px; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+}
+
+.submit-btn:hover { 
+  background: #312e81; 
+  transform: translateY(-2px); 
+  box-shadow: 0 5px 15px rgba(49, 46, 129, 0.3); 
+}
+
+/* =========================================
+   6. Direct WhatsApp Block (Bottom)
+========================================= */
 .direct-contact { 
-  flex: 1; min-width: 300px; display: flex; flex-direction: column; 
-  justify-content: center; align-items: center; text-align: center; 
-  background: #f8f9fa; padding: 3rem; border-left: 1px solid #eee; 
+  flex: 1; 
+  min-width: 300px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+  background: #f8fafc; 
+  padding: 3rem; 
+  border-left: 1px solid #e2e8f0; 
 }
-.direct-contact h3 { color: #333; margin-bottom: 1rem; font-size: 1.5rem; }
-.direct-contact p { color: #666; margin-bottom: 2rem; line-height: 1.6; font-size: 1.1rem; }
+
+.direct-contact h3 { 
+  color: #0f172a; 
+  margin-bottom: 1rem; 
+  font-size: 1.5rem; 
+  font-weight: 600;
+}
+
+.direct-contact p { 
+  color: #64748b; 
+  margin-bottom: 2rem; 
+  line-height: 1.6; 
+  font-size: 1.1rem; 
+}
+
 .whatsapp-btn { 
-  display: inline-flex; align-items: center; justify-content: center; 
-  padding: 1.2rem 2rem; background: #25D366; color: white; 
-  text-decoration: none; border-radius: 30px; font-weight: bold; 
-  font-size: 1.1rem; animation: pulseGlow 2s infinite; transition: transform 0.3s; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 1.2rem 2rem; 
+  background: #25D366; 
+  color: white; 
+  text-decoration: none; 
+  border-radius: 30px; 
+  font-weight: 600; 
+  font-size: 1.1rem; 
+  animation: pulseGlow 2s infinite; 
+  transition: transform 0.3s; 
 }
-.whatsapp-btn:hover { animation: none; transform: scale(1.05); background: #20ba56; }
+
+.whatsapp-btn:hover { 
+  animation: none; 
+  transform: scale(1.05); 
+  background: #20ba56; 
+}
+
+/* =========================================
+   7. Top-Right Floating Bar (Glassmorphism)
+========================================= */
+.top-contact-bar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 1000;
+  transition: all 0.4s ease-out;
+  
+  /* Frosted Glass Effect */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  padding: 10px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.top-contact-bar.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto; 
+}
+
+.top-contact-bar.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  visibility: hidden;
+  pointer-events: none; 
+}
+
+.top-btn {
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.whatsapp-btn-top {
+  background: #25D366;
+}
+
+.whatsapp-btn-top:hover {
+  background: #20ba56;
+}
+
+.email-btn-top {
+  background: #EA4335;
+}
+
+.email-btn-top:hover {
+  background: #d33828;
+}
