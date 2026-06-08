@@ -16,13 +16,17 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error("Could not connect to MongoDB:", err));
 
 // API Route to handle consultation requests
+// API Route to handle consultation requests
 app.post('/api/consultation', async (req, res) => {
+  console.log("1. Request received from frontend:", req.body); // Debugging line
   try {
     const newConsultation = new Consultation(req.body);
-    await newConsultation.save();
+    const savedConsultation = await newConsultation.save();
+    console.log("2. Successfully saved to MongoDB:", savedConsultation); // Debugging line
+    
     res.status(201).json({ message: "Consultation request received successfully." });
   } catch (error) {
-    console.error(error);
+    console.error("ERROR saving to MongoDB:", error); // Debugging line
     res.status(500).json({ error: "Failed to process consultation request." });
   }
 });

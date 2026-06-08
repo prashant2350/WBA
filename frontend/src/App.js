@@ -1,20 +1,35 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
 import ServicesList from './components/ServicesList';
 import ConsultationForm from './components/ConsultationForm';
+import ServiceDetails from './components/ServiceDetails';
 
 function App() {
   return (
-    <div className="App" style={{ fontFamily: 'Arial, sans-serif', padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-      <header style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ color: '#1a237e' }}>WISE BUSINESS ADVISORS LLP</h1>
-        <p>Corporate | Legal | Taxation | Compliance | IPR | Financial Advisory</p>
-      </header>
-      
-      <main>
-        <ServicesList />
-        <ConsultationForm />
-      </main>
-    </div>
+    <Router>
+      <div className="app-container">
+        <header className="app-header">
+          <h1>WISE BUSINESS ADVISORS LLP</h1>
+          <p>Corporate | Legal | Taxation | Compliance | IPR | Financial Advisory</p>
+        </header>
+        
+        <main>
+          <Routes>
+            {/* Home Page Route */}
+            <Route path="/" element={
+              <>
+                <ServicesList />
+                <ConsultationForm />
+              </>
+            } />
+            
+            {/* Individual Service Page Route */}
+            <Route path="/service/:id" element={<ServiceDetails />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

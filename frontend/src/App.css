@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+/* --- Reset & Base Styles --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  background-color: #f4f7f6; 
+  color: #333; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- Animations --- */
+@keyframes fadeInSlideUp { 
+  from { opacity: 0; transform: translateY(30px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
+@keyframes pulseGlow { 
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); transform: scale(1); } 
+  50% { box-shadow: 0 0 15px 10px rgba(37, 211, 102, 0); transform: scale(1.02); } 
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); } 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- Layout --- */
+.app-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+/* --- Header Section --- */
+.app-header { 
+  text-align: center; margin-bottom: 4rem; margin-top: 2rem;
+  animation: fadeInSlideUp 0.8s ease-out; 
+}
+.app-header h1 { color: #1a237e; font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 800; letter-spacing: 1px; }
+.app-header p { color: #555; font-size: 1.1rem; font-weight: 500; letter-spacing: 0.5px; }
+
+/* --- Services Section --- */
+.services-container { 
+  margin-bottom: 5rem; 
+  animation: fadeInSlideUp 0.8s ease-out 0.2s both; 
+}
+.services-container h2 { text-align: center; color: #1a237e; margin-bottom: 2.5rem; font-size: 2.2rem; }
+.services-grid { 
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; 
+}
+.service-card { 
+  background: white; padding: 2rem; border-radius: 12px; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.04); transition: all 0.3s ease; 
+  border-top: 5px solid #1a237e; cursor: default;
+}
+.service-card:hover { 
+  transform: translateY(-10px); 
+  box-shadow: 0 15px 25px rgba(26, 35, 126, 0.1); 
+  border-top-color: #d4af37;
+}
+.service-card h3 { color: #1a237e; margin-bottom: 1rem; font-size: 1.3rem; }
+.service-card p { color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+.fee-display { 
+  display: inline-block; background: #e8eaf6; color: #1a237e; 
+  padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* --- Form & Contact Section --- */
+.contact-section { 
+  background: white; border-radius: 16px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; flex-wrap: wrap; 
+  overflow: hidden; animation: fadeInSlideUp 0.8s ease-out 0.4s both; 
 }
+.form-container { flex: 1.5; min-width: 300px; padding: 3rem; }
+.form-container h2 { color: #1a237e; margin-bottom: 2rem; font-size: 2rem; }
+.form-container input, .form-container textarea { 
+  width: 100%; padding: 1rem; margin-bottom: 1.2rem; 
+  border: 2px solid #eee; border-radius: 8px; font-family: inherit; 
+  font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; 
+}
+.form-container input:focus, .form-container textarea:focus { 
+  outline: none; border-color: #1a237e; box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1); 
+}
+.form-container textarea { resize: vertical; min-height: 120px; }
+.submit-btn { 
+  width: 100%; padding: 1.2rem; background: #1a237e; color: white; 
+  border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; 
+  cursor: pointer; transition: all 0.3s ease; 
+}
+.submit-btn:hover { background: #0d145c; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3); }
 
-.App-link {
-  color: #61dafb;
+/* --- Direct WhatsApp Contact --- */
+.direct-contact { 
+  flex: 1; min-width: 300px; display: flex; flex-direction: column; 
+  justify-content: center; align-items: center; text-align: center; 
+  background: #f8f9fa; padding: 3rem; border-left: 1px solid #eee; 
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.direct-contact h3 { color: #333; margin-bottom: 1rem; font-size: 1.5rem; }
+.direct-contact p { color: #666; margin-bottom: 2rem; line-height: 1.6; font-size: 1.1rem; }
+.whatsapp-btn { 
+  display: inline-flex; align-items: center; justify-content: center; 
+  padding: 1.2rem 2rem; background: #25D366; color: white; 
+  text-decoration: none; border-radius: 30px; font-weight: bold; 
+  font-size: 1.1rem; animation: pulseGlow 2s infinite; transition: transform 0.3s; 
 }
+.whatsapp-btn:hover { animation: none; transform: scale(1.05); background: #20ba56; }
