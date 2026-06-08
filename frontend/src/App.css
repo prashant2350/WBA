@@ -258,21 +258,25 @@ body {
 /* =========================================
    7. Top-Right Floating Bar (Glassmorphism)
 ========================================= */
+/* =========================================
+   7. Top-Right Floating Bar (Glassmorphism)
+========================================= */
 .top-contact-bar {
   position: fixed;
   top: 20px;
   right: 20px;
   display: flex;
-  gap: 15px;
+  flex-direction: column; /* Stacks the buttons vertically */
+  gap: 12px; /* Adds space between the top and bottom button */
   z-index: 1000;
   transition: all 0.4s ease-out;
   
   /* Frosted Glass Effect */
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  padding: 10px;
-  border-radius: 40px;
+  -webkit-backdrop-filter: blur(10px); 
+  padding: 12px; 
+  border-radius: 25px; /* Adjusted to look better as a vertical container */
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -323,4 +327,15 @@ body {
 
 .email-btn-top:hover {
   background: #d33828;
+}
+/* Styling for the new scroll-to-book button */
+.book-btn-top {
+  background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.book-btn-top:hover {
+  background: linear-gradient(45deg, #e07ceb 0%, #e3455a 100%);
 }
